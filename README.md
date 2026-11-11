@@ -22,7 +22,7 @@ Personal academic website of Jaysa Rafi. Plain HTML and CSS, hosted on GitHub Pa
 
 **Mark a job market paper.** Set `jmp: true` on that paper in `data/papers.js`.
 
-**Turn on the CV button.** Save the CV as `files/Rafi_CV.pdf`. In `index.html`, find the comment that starts with "CV button" and remove the comment lines around the link.
+**Update the CV.** Replace `files/Rafi_CV.pdf` with the new PDF, keeping the same file name.
 
 **Turn on the research and teaching statements.** Save them as `files/Rafi_Research_Statement.pdf` and `files/Rafi_Teaching_Statement.pdf`, then remove the comment lines around that block in `index.html`.
 

@@ -1,0 +1,171 @@
+/* ---------- Colors ---------- */
+:root {
+  --bg: #fdfdfb;
+  --text: #1d1f21;
+  --muted: #5b6168;
+  --rule: #e2e2dd;
+  --accent: #6b2c91;        /* Williams purple, darkened for contrast */
+  --accent-soft: #f3edf7;
+  --todo-bg: #fff4c2;
+  --todo-text: #6a5300;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15161a;
+    --text: #e6e6e3;
+    --muted: #a3a8b0;
+    --rule: #2c2e35;
+    --accent: #c9a6e4;
+    --accent-soft: #2a2233;
+    --todo-bg: #4a3d00;
+    --todo-text: #ffe68a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #15161a;
+  --text: #e6e6e3;
+  --muted: #a3a8b0;
+  --rule: #2c2e35;
+  --accent: #c9a6e4;
+  --accent-soft: #2a2233;
+  --todo-bg: #4a3d00;
+  --todo-text: #ffe68a;
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 16px; }
+
+.sans, .nav, .button, .theme-toggle, .jmp, .status, .paper-links, .meta, footer, summary, .todo {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute; left: 1rem; top: -3rem;
+  background: var(--accent); color: var(--bg);
+  padding: .5rem .75rem; z-index: 100; border-radius: 4px;
+}
+.skip-link:focus { top: .5rem; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar .wrap { display: flex; align-items: center; gap: 1rem; min-height: 3.5rem; }
+
+.nav { flex: 1; }
+.nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.nav a { color: var(--text); text-decoration: none; font-size: .9rem; }
+.nav a:hover { color: var(--accent); }
+.nav .num { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: .3rem; }
+
+.theme-toggle {
+  border: 1px solid var(--rule); background: transparent; color: var(--muted);
+  font-size: .8rem; padding: .3rem .6rem; border-radius: 4px; cursor: pointer; white-space: nowrap;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+
+/* ---------- Header ---------- */
+.intro { display: flex; gap: 2rem; align-items: flex-start; padding: 2.5rem 0 1.5rem; }
+.headshot { width: 160px; height: 160px; object-fit: cover; border-radius: 6px; flex-shrink: 0; background: var(--rule); }
+.intro h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 .25rem; font-weight: 600; }
+.intro .role { margin: 0; color: var(--muted); }
+.meta { font-size: .92rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.meta li { margin: .15rem 0; }
+.meta .profiles a { margin-right: .9rem; }
+
+.button {
+  display: inline-block; margin-top: 1rem;
+  background: var(--accent); color: var(--bg);
+  text-decoration: none; font-size: .9rem; font-weight: 600;
+  padding: .45rem .9rem; border-radius: 4px;
+}
+.button:hover { opacity: .9; }
+
+/* ---------- Sections ---------- */
+section { padding: 1.5rem 0 1rem; border-top: 1px solid var(--rule); }
+section h2 { font-size: 1.35rem; margin: 0 0 1rem; font-weight: 600; }
+section h2 .num { color: var(--muted); font-weight: 400; margin-right: .5rem; font-size: 1rem; }
+
+.fields { color: var(--muted); }
+.fields strong { color: var(--text); font-weight: 600; }
+
+/* ---------- Papers ---------- */
+.paper { margin: 0 0 1.75rem; }
+.paper-title { font-size: 1.08rem; margin: 0 0 .2rem; line-height: 1.4; font-weight: 700; }
+.paper-title a { color: var(--text); text-decoration-color: var(--rule); }
+.paper-title a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+.jmp {
+  display: inline-block; margin-left: .5rem; vertical-align: middle;
+  font-size: .72rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-soft); padding: .1rem .45rem; border-radius: 3px;
+}
+.coauthors { margin: 0; color: var(--muted); font-size: .98rem; }
+.status { margin: .15rem 0 0; font-size: .88rem; color: var(--muted); font-style: normal; }
+
+.abstract { margin: .4rem 0 0; }
+.abstract summary { cursor: pointer; font-size: .88rem; color: var(--accent); width: max-content; }
+.abstract-body { border-left: 2px solid var(--rule); padding: .1rem 0 .1rem 1rem; margin: .4rem 0; font-size: .98rem; }
+.abstract-body p { margin: .4rem 0; }
+
+.paper-links { margin: .35rem 0 0; font-size: .88rem; }
+.paper-links > * { margin-right: 1rem; }
+.paper-links a::before { content: "["; color: var(--muted); }
+.paper-links a::after  { content: "]"; color: var(--muted); }
+
+/* ---------- Lists (teaching, experience) ---------- */
+.entries { list-style: none; margin: 0; padding: 0; }
+.entries li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; margin-bottom: 1rem; }
+.entries .when { color: var(--muted); font-size: .88rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding-top: .15rem; }
+.entries .what strong { font-weight: 600; }
+.entries .what span { display: block; color: var(--muted); font-size: .95rem; }
+.subhead { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 .75rem; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+footer { border-top: 1px solid var(--rule); margin-top: 1.5rem; padding: 1.25rem 0 2.5rem; font-size: .85rem; color: var(--muted); }
+
+/* ---------- Preview placeholders ---------- */
+.todo { background: var(--todo-bg); color: var(--todo-text); font-size: .8rem; padding: .05rem .4rem; border-radius: 3px; }
+
+/* ---------- Phones ---------- */
+@media (max-width: 600px) {
+  body { font-size: 1rem; }
+  .topbar .wrap { flex-wrap: wrap; padding-top: .5rem; padding-bottom: .5rem; gap: .5rem; }
+  .nav ul { gap: .2rem .9rem; }
+  .intro { flex-direction: column; gap: 1.25rem; padding-top: 1.75rem; }
+  .headshot { width: 120px; height: 120px; }
+  .intro h1 { font-size: 1.65rem; }
+  .entries li { grid-template-columns: 1fr; gap: 0; }
+  html { scroll-padding-top: 6rem; }
+}
+
+@media print {
+  .topbar, .theme-toggle, .skip-link { display: none; }
+  .abstract-body { display: block; }
+}
